@@ -44,6 +44,11 @@ module ActiveAdmin
         @stylesheets ||= [ 'active_admin/editor/wysiwyg.css' ]
       end
 
+      def local_storage
+        local_storage.present? &&
+          local_storage == true
+      end
+
       def s3_configured?
         aws_access_key_id.present? &&
           aws_access_secret.present? &&
