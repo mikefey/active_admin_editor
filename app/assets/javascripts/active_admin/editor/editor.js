@@ -63,7 +63,7 @@
       var file = this.files[0]
       if (file) {
         $input.val('')
-        _this.upload(file, function(location) {
+        _this.upload(file, function(location, imageUrl) {
           alert("success")
           $input.val(location)
         })
@@ -129,13 +129,12 @@
     xhr.onreadystatechange = function() {
       if (xhr.readyState != 4) { return }
       _this._uploading(false)
-      if (xhr.status == 204 || xhr.status == 200) {
-        
-        callback(xhr.getResponseHeader('Location'))
-      else if (xhr.status == 204 || xhr.status == 200) {
+      if (xhr.status == 204) {
+        callback(xhr.getResponseHeader('Location'), null)
+      }else if (xhr.status == 200) {
         var data = JSON.parse(xhr.responseText);
         var image = data.image.tablet.url;
-
+        callback(xhr.getResponseHeader('Location'), image);
       } else {
         if (!config.local_storage) {
           alert('Failed to upload file. Have you configured S3 properly?')
