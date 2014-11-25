@@ -13,6 +13,7 @@
     config.local_storage = <%= ActiveAdmin::Editor.configuration.local_storage_configured %>
     config.local_storage_upload_endpoint = '<%= ActiveAdmin::Editor.configuration.local_storage_upload_endpoint %>'
     config.uploads_enabled = <%= ActiveAdmin::Editor.configuration.local_storage_configured %>
+    config._token = '<%= form_authenticity_token %>';
   }
   config.parserRules = <%= ActiveAdmin::Editor.configuration.parser_rules.to_json %>
 })(window)
