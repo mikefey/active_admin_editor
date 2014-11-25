@@ -44,9 +44,8 @@ module ActiveAdmin
         @stylesheets ||= [ 'active_admin/editor/wysiwyg.css' ]
       end
 
-      def local_storage
-        local_storage.present? &&
-          local_storage == true
+      def local_storage_configured
+        local_storage.present?
       end
 
       def s3_configured?
