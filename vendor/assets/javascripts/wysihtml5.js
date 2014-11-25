@@ -5053,12 +5053,23 @@ wysihtml5.dom.parse = (function() {
     url: (function() {
       var REG_EXP = /^https?:\/\//i;
       return function(attributeValue) {
-        if (!attributeValue || !attributeValue.match(REG_EXP)) {
+        /* if (!attributeValue || !attributeValue.match(REG_EXP)) {
           return null;
+        } */
+        if (!attributeValue) {
+          return "";
         }
-        return attributeValue.replace(REG_EXP, function(match) {
+        /* return attributeValue.replace(REG_EXP, function(match) {
           return match.toLowerCase();
-        });
+        }); */
+        var parser = document.createElement('a');
+        parser.href = attributeValue;
+
+        if (parser.protocol == 'http:'
+            || parser.protocol == 'https:'
+            || parser.protocol == 'ftp:') {
+          return attributeValue;
+        };
       };
     })(),
     
