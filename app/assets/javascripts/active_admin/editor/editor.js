@@ -151,7 +151,7 @@
         } 
       }
 
-      xhr.open('POST', config.local_storage_upload_endpoint = '?authenticity_token=' + authenticityToken, true)
+      xhr.open('POST', config.local_storage_upload_endpoint + '?authenticity_token=' + authenticityToken, true)
     }
 
     xhr.send(fd)
