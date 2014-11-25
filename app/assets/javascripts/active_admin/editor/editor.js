@@ -64,6 +64,7 @@
       if (file) {
         $input.val('')
         _this.upload(file, function(location) {
+          alert("success")
           $input.val(location)
         })
       }
@@ -129,8 +130,12 @@
       if (xhr.readyState != 4) { return }
       _this._uploading(false)
       if (xhr.status == 204 || xhr.status == 200) {
-        console.log(JSON.parse(xhr.responseText));
+        
         callback(xhr.getResponseHeader('Location'))
+      else if (xhr.status == 204 || xhr.status == 200) {
+        var data = JSON.parse(xhr.responseText);
+        var image = data.image.tablet.url;
+
       } else {
         if (!config.local_storage) {
           alert('Failed to upload file. Have you configured S3 properly?')
