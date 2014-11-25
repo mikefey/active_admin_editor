@@ -142,7 +142,16 @@
     if (!config.local_storage) {
       xhr.open('POST', 'https://' + config.s3_bucket + '.s3.amazonaws.com', true)
     } else {
-      xhr.open('POST', config.local_storage_upload_endpoint, true)
+      var authenticityToken = '';
+      var metas = document.getElementsByTagName('meta'); 
+
+      for (i = 0; i < metas.length; i++) { 
+        if (metas[i].getAttribute('name') == 'csrf-token') { 
+          authenticityToken = metas[i].getAttribute('content'); 
+        } 
+      }
+
+      xhr.open('POST', config.local_storage_upload_endpoint = '?authenticity_token=' + authenticityToken, true)
     }
 
     xhr.send(fd)
