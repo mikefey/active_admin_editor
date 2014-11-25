@@ -131,7 +131,11 @@
       if (xhr.status == 204) {
         callback(xhr.getResponseHeader('Location'))
       } else {
-        alert('Failed to upload file. Have you configured S3 properly?')
+        if (!config.local_storage) {
+          alert('Failed to upload file. Have you configured S3 properly?')
+        } else {
+          alert('Failed to upload file.')
+        }
       }
     }
 
