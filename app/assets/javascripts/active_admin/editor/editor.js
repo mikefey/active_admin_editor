@@ -128,7 +128,7 @@
     xhr.onreadystatechange = function() {
       if (xhr.readyState != 4) { return }
       _this._uploading(false)
-      if (xhr.status == 204) {
+      if (xhr.status == 204 || xhr.status == 200) {
         callback(xhr.getResponseHeader('Location'))
       } else {
         if (!config.local_storage) {
