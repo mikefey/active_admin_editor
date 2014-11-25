@@ -138,7 +138,7 @@
     if (!config.local_storage) {
       xhr.open('POST', 'https://' + config.s3_bucket + '.s3.amazonaws.com', true)
     } else {
-      xhr.open('POST', local_storage_upload_endpoint, true)
+      xhr.open('POST', config.local_storage_upload_endpoint, true)
     }
 
     xhr.send(fd)
