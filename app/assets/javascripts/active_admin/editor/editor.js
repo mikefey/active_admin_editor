@@ -64,8 +64,12 @@
       if (file) {
         $input.val('')
         _this.upload(file, function(location, imageUrl) {
-          alert("success")
-          $input.val(location)
+          if (!imageUrl) {
+            $input.val(location)
+          } else {
+            var imageTagString = '<img src="' + imageUrl + '" >';
+            console.log(this._editor);
+          }
         })
       }
     })
