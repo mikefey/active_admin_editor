@@ -27,7 +27,7 @@ module ActiveAdmin
       attr_accessor :storage_dir
 
       # use local storage for uploads
-      attr_accessor :local_storage_configured
+      attr_accessor :local_storage
 
       # wysiwyg stylesheets that get included in the backend and the frontend.
       attr_accessor :stylesheets
