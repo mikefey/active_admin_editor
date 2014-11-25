@@ -68,6 +68,7 @@
             $input.val(location)
           } else {
             var imageTagString = '<img src="' + imageUrl + '" >';
+            console.log(imageTagString);
             _this._editor.setValue(imageTagString, true);
           }
         })
