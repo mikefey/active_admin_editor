@@ -1,5 +1,6 @@
 # Active Admin Editor
-[![Build Status](https://travis-ci.org/ejholmes/active_admin_editor.png?branch=master)](https://travis-ci.org/ejholmes/active_admin_editor) [![Code Climate](https://codeclimate.com/github/ejholmes/active_admin_editor.png)](https://codeclimate.com/github/ejholmes/active_admin_editor)
+
+## This fork includes an update that allows carrierwave to be used for image uploads
 
 This is a wysiwyg html editor for the [Active Admin](http://activeadmin.info/)
 interface using [wysihtml5](https://github.com/xing/wysihtml5).
