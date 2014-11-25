@@ -108,11 +108,14 @@
       , fd = new FormData()
       , key = config.storage_dir + '/' + Date.now().toString() + '-' + file.name
 
-    fd.append('key', key)
-    fd.append('AWSAccessKeyId', config.aws_access_key_id)
-    fd.append('acl', 'public-read')
-    fd.append('policy', this.policy.document)
-    fd.append('signature', this.policy.signature)
+    if (!config.local_storage) {
+      fd.append('key', key)
+      fd.append('AWSAccessKeyId', config.aws_access_key_id)
+      fd.append('acl', 'public-read')
+      fd.append('policy', this.policy.document)
+      fd.append('signature', this.policy.signature)
+    }
+    
     fd.append('Content-Type', file.type)
     fd.append('file', file)
 
@@ -132,7 +135,12 @@
       }
     }
 
-    xhr.open('POST', 'https://' + config.s3_bucket + '.s3.amazonaws.com', true)
+    if (!config.local_storage) {
+      xhr.open('POST', 'https://' + config.s3_bucket + '.s3.amazonaws.com', true)
+    } else {
+      xhr.open('POST', local_storage_upload_endpoint, true)
+    }
+
     xhr.send(fd)
 
     return xhr

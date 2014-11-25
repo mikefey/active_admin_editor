@@ -29,6 +29,9 @@ module ActiveAdmin
       # use local storage for uploads
       attr_accessor :local_storage
 
+      # use local storage for uploads
+      attr_accessor :local_storage_upload_endpoint
+
       # wysiwyg stylesheets that get included in the backend and the frontend.
       attr_accessor :stylesheets
 
@@ -46,6 +49,10 @@ module ActiveAdmin
 
       def local_storage_configured
         local_storage.present?
+      end
+
+      def local_storage_upload_endpoint
+        @local_storage_upload_endpoint
       end
 
       def s3_configured?
