@@ -129,6 +129,7 @@
       if (xhr.readyState != 4) { return }
       _this._uploading(false)
       if (xhr.status == 204 || xhr.status == 200) {
+        console.log(xhr.getResponseHeader('Location'));
         callback(xhr.getResponseHeader('Location'))
       } else {
         if (!config.local_storage) {
