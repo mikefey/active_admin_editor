@@ -155,7 +155,7 @@
 
       for (i = 0; i < metas.length; i++) { 
         if (metas[i].getAttribute('name') == 'csrf-token') { 
-          authenticityToken = metas[i].getAttribute('content'); 
+          authenticityToken = encodeURIComponent(metas[i].getAttribute('content')); 
         } 
       }
 
